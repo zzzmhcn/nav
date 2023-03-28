@@ -1,6 +1,7 @@
 # 极简导航
 当前版本为: 1.0.0
 线上地址: [https://nav.zzzmh.cn](https://nav.zzzmh.cn)
+开源地址: [https://github.com/zzzmhcn/nav](https://github.com/zzzmhcn/nav)
 
 ## 使用方法
 1. 点击右上角齿轮
