@@ -140,15 +140,15 @@ html, body {
 }
 
 .bookmark-img {
-    background: rgba(233, 233, 233, .85);
-    padding: calc((3.3rem - 36px) / 2);
+    background: rgba(220, 225, 235, .7);
+    padding: calc((3.3rem - 40px) / 2);
     line-height: 3.3rem;
     border-radius: .5rem;
 }
 
 .bookmark-img img {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: .5rem;
     display: block;
 }
@@ -489,13 +489,13 @@ html, body {
     }
 
     .bookmark-img {
-        padding: calc((6rem - 52px) / 2);
+        padding: calc((6rem - 64px) / 2);
         line-height: 6rem;
     }
 
     .bookmark-img img {
-        width: 52px;
-        height: 52px;
+        width: 64px;
+        height: 64px;
     }
 
     .bookmark-default-img {
