@@ -26,33 +26,31 @@ html, body {
     font-size: 32px;
 }
 
-.background-image {
+.background {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
+    z-index: -9999;
     width: 100%;
-    z-index: -10;
-    background-position: center 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    zoom: 1;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
 }
 
-.background-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -9;
-    zoom: 1;
+.background img {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .search-bar {
     display: flex;
-    margin: 8rem auto 4rem;
-    max-width: 50rem;
+    margin: 0 auto;
+    max-width: calc(37.5% + 2rem);
+    padding: 15vh 0 4rem;
 }
 
 .search-bar select {
@@ -102,7 +100,7 @@ html, body {
 
 .bookmarks {
     margin: 0 auto 2rem;
-    max-width: 48rem;
+    max-width: 37.5%;
     min-height: 15rem;
     border-radius: 1rem;
     padding: .5rem 1rem;
@@ -115,7 +113,7 @@ html, body {
 }
 
 .bookmarks-title {
-    padding: 1rem;
+    padding: .85rem 1.2rem;
 }
 
 .bookmarks-title span {
@@ -175,17 +173,17 @@ html, body {
 .bookmark-name {
     font-size: 0.8rem;
     line-height: 1.75rem;
-    width: 3rem;
+    width: 3.3rem;
     white-space: nowrap;
     text-align: center;
 }
 
 .white .bookmark-name {
-    color: #000;
+    color: #333;
 }
 
 .black .bookmark-name {
-    color: #fff;
+    color: #efefef;
 }
 
 .settings {
@@ -346,13 +344,14 @@ html, body {
     display: block;
     position: absolute;
     margin: 3rem 1px 0;
-    max-width: 50rem;
+    max-width: calc(37.5% + 2rem);
     width: 100%;
     border-radius: 0 0 .5rem .5rem;
     z-index: 1000;
 }
 
 .search-datalist .search-datalist-item {
+    color: #555;
     padding: .85rem 0 .85rem 2rem;
     cursor: pointer;
 }
@@ -369,4 +368,140 @@ html, body {
     color: #fff;
     background-color: #f56c6c;
     border-color: #f56c6c;
+}
+
+/* 多分辨率兼容 */
+@media (max-width: 768px) {
+
+}
+
+@media (min-width: 769px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1600px) {
+
+}
+
+@media (min-width: 2500px) {
+    .search-bar input[type='text'] {
+        font-size: 1.457rem !important;
+        height: calc(4rem - 5px) !important;
+    }
+
+    .search-bar select, .search-bar button {
+        font-size: 1.457rem !important;
+        height: 4rem !important;
+    }
+
+    .search-bar .search-datalist {
+        margin-top: 4rem;
+    }
+
+    .search-bar .search-datalist .search-datalist-item {
+        padding: 1.2rem 0 1.2rem 3.666rem;
+        font-size: 1.347rem !important;
+    }
+
+    .bookmarks-title span {
+        font-size: 1.25rem;
+        line-height: 2.5rem;
+        white-space: nowrap;
+    }
+
+    .bookmark-name {
+        width: 4rem;
+        font-size: 1rem;
+        padding-top: .33rem;
+    }
+
+    .bookmark-img {
+        padding: calc((4rem - 48px) / 2);
+        line-height: 4rem;
+    }
+
+    .bookmark-img img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .bookmark-default-img {
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 3800px) {
+
+    .search-bar{
+        padding-bottom: 6rem;
+    }
+
+    .search-bar input[type='text'] {
+        font-size: 1.88rem !important;
+        height: calc(6rem - 6px) !important;
+    }
+
+    .search-bar select, .search-bar button {
+        font-size: 1.88rem !important;
+        height: 6rem !important;
+    }
+
+    .search-bar .search-datalist {
+        margin-top: 6rem;
+    }
+
+    .search-bar .search-datalist .search-datalist-item {
+        padding: 1.75rem 0 1.75rem 4rem;
+        font-size: 1.75rem !important;
+    }
+    .bookmarks{
+        padding: 1.25rem 2rem;
+    }
+    .bookmarks-group{
+        margin-bottom: 2rem;
+    }
+
+    .bookmarks-title span {
+        font-size: 1.75rem;
+        line-height: 3.6rem;
+        white-space: nowrap;
+    }
+
+    .bookmark{
+        padding: 0 2rem;
+    }
+
+    .bookmark-name {
+        width: 6rem;
+        font-size: 1.4rem;
+        padding-top: 1rem;
+    }
+
+    .bookmark-img {
+        padding: calc((6rem - 52px) / 2);
+        line-height: 6rem;
+    }
+
+    .bookmark-img img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .bookmark-default-img {
+        width: 6rem;
+        height: 6rem;
+        line-height: 6rem;
+        font-size: 2.75rem;
+    }
 }

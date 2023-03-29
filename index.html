@@ -14,11 +14,10 @@
 </head>
 <body>
 <div id="app">
-    <!-- 背景图片和遮罩层 -->
-    <div class="background-image" v-if="config.background"
-         :style="{ backgroundImage :'url(\'' + config.background +'\')'}"></div>
-    <div class="background-mask"
-         :style="{background: (config.settings.theme == 'white' ? 'rgba(0,0,0,' : 'rgba(255,255,255,') + ((100 - config.settings.background.opacity) / 100) + ')'}"></div>
+    <!-- 背景图片 用css实现图片居中 -->
+    <div class="background">
+        <img :src="config.background" :style="{opacity: (config.settings.background.opacity / 100)}">
+    </div>
     <!-- 顶部菜单栏 目前只有settings一个按钮 -->
     <div class="header-bar">
         <div class="header-bar-btn" @click="dialogs.settings = true">
@@ -28,6 +27,7 @@
     <!-- 中间搜索框 使用 select + input[type='text'] + button 拼接而成，搜索联想提示框则自己写div+js实现 -->
     <div class="search-bar"
          :class="{'search-bar-show-data-list': search.showSearchDatalist && search.words.length > 0}">
+
         <select v-model="search.searchEngineIndex">
             <option v-for="(item, index) in search.searchEngines" :key="index" :value="index">{{item.name}}</option>
         </select>
@@ -155,8 +155,10 @@
                         3 是icon设为false,image设为null,程序会自动获取首字母，生成简易icon <br>
                         <br>
                         更多信息欢迎到开源地址github上查看 <br>
-                        Github： <a href="https://github.com/zzzmhcn/nav" target="_blank">https://github.com/zzzmhcn/nav</a> <br>
-                        Gitee： <a href="https://gitee.com/zzzmhcn/nav" target="_blank">https://gitee.com/zzzmhcn/nav</a> <br>
+                        Github： <a href="https://github.com/zzzmhcn/nav"
+                                   target="_blank">https://github.com/zzzmhcn/nav</a> <br>
+                        Gitee： <a href="https://gitee.com/zzzmhcn/nav" target="_blank">https://gitee.com/zzzmhcn/nav</a>
+                        <br>
                         线上地址：<a href="https://nav.zzzmh.cn" target="_blank">https://nav.zzzmh.cn</a>
                     </p>
                 </div>
