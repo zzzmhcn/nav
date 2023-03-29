@@ -112,8 +112,9 @@ const vm = new Vue({
             // 从db恢复图片 (异步)
             idbKeyval.get('config.settings').then((val) => {
                 if (val) {
-                    vm.config.settings = JSON.parse(val);
-                    vm.search.searchEngineIndex = vm.config.settings.searchEngineDefaultIndex;
+                    const json = JSON.parse(val);
+                    vm.config.settings = json;
+                    vm.search.searchEngineIndex = json.searchEngineDefaultIndex ? json.searchEngineDefaultIndex : 0;
                 }
             });
             idbKeyval.get('config.background').then((val) => {
@@ -128,7 +129,7 @@ const vm = new Vue({
             this.$refs.keyword.focus();
         },
         /** 获取默认背景图 用于用户首次访问 未上传过背景图时 这里使用Blob方式请求，并转换为base64缓存到db */
-        getDefaultImage: function (){
+        getDefaultImage: function () {
             this.ajax(
                 "get",
                 "public/img/default.webp",
@@ -144,7 +145,7 @@ const vm = new Vue({
             )
         },
         /** 同上 首次访问 获取默认书签 */
-        getDefaultBookmarks: function (){
+        getDefaultBookmarks: function () {
             this.ajax(
                 "get",
                 "public/json/default.json",
