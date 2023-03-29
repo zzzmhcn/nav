@@ -113,8 +113,9 @@ const vm = new Vue({
             idbKeyval.get('config.settings').then((val) => {
                 if (val) {
                     const json = JSON.parse(val);
+                    json.searchEngineDefaultIndex = json.searchEngineDefaultIndex ? json.searchEngineDefaultIndex : 0;
                     vm.config.settings = json;
-                    vm.search.searchEngineIndex = json.searchEngineDefaultIndex ? json.searchEngineDefaultIndex : 0;
+                    vm.search.searchEngineIndex = json.searchEngineDefaultIndex;
                 }
             });
             idbKeyval.get('config.background').then((val) => {
