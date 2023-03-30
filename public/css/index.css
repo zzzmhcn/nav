@@ -189,7 +189,8 @@ html, body {
 .bookmark:hover {
     filter: brightness(1.125);
 }
-.bookmark:hover .bookmark-name{
+
+.bookmark:hover .bookmark-name {
     font-weight: 600;
 }
 
@@ -377,7 +378,7 @@ html, body {
     border-color: #f56c6c;
 }
 
-/* 多分辨率兼容 */
+/* 多分辨率兼容 低分辨率和手机端懒得写了 以后再说吧 */
 @media (max-width: 768px) {
 
 }
@@ -399,6 +400,11 @@ html, body {
 }
 
 @media (min-width: 2500px) {
+
+    .search-bar, .search-datalist {
+        max-width: calc(32.5% + 2rem);
+    }
+
     .search-bar input[type='text'] {
         font-size: 1.457rem !important;
         height: calc(4rem - 5px) !important;
@@ -418,6 +424,10 @@ html, body {
         font-size: 1.347rem !important;
     }
 
+    .bookmarks {
+        max-width: 32.5%;
+    }
+
     .bookmarks-title span {
         font-size: 1.25rem;
         line-height: 2.5rem;
@@ -430,14 +440,9 @@ html, body {
         padding-top: .33rem;
     }
 
-    .bookmark-img {
-        padding: calc((4rem - 48px) / 2);
-        line-height: 4rem;
-    }
-
     .bookmark-img img {
-        width: 48px;
-        height: 48px;
+        width: 4rem;
+        height: 4rem;
     }
 
     .bookmark-default-img {
@@ -449,6 +454,11 @@ html, body {
 }
 
 @media (min-width: 3800px) {
+
+
+    .search-bar, .search-datalist {
+        max-width: calc(27.5% + 2rem);
+    }
 
     .search-bar {
         padding-bottom: 6rem;
@@ -475,6 +485,7 @@ html, body {
 
     .bookmarks {
         padding: 1.25rem 2rem;
+        max-width: 27.5%;
     }
 
     .bookmarks-group {
@@ -497,14 +508,9 @@ html, body {
         padding-top: 1rem;
     }
 
-    .bookmark-img {
-        padding: calc((6rem - 64px) / 2);
-        line-height: 6rem;
-    }
-
     .bookmark-img img {
-        width: 64px;
-        height: 64px;
+        width: 6rem;
+        height: 6rem;
     }
 
     .bookmark-default-img {
