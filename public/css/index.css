@@ -113,7 +113,7 @@ html, body {
 }
 
 .bookmarks-title {
-    padding: .85rem 1.2rem;
+    padding: 0 1.2rem .5rem;
 }
 
 .bookmarks-title span {
@@ -131,7 +131,7 @@ html, body {
 }
 
 .bookmark {
-    padding: 0 1rem;
+    padding: 0 1rem .8rem;
     display: inherit;
 }
 
@@ -140,17 +140,17 @@ html, body {
 }
 
 .bookmark-img {
-    background: rgba(220, 225, 235, .7);
-    padding: calc((3.3rem - 40px) / 2);
-    line-height: 3.3rem;
-    border-radius: .5rem;
+    background: rgba(255, 255, 255, .95);
+    border-radius: .66rem;
+    overflow: hidden;
 }
 
 .bookmark-img img {
-    width: 40px;
-    height: 40px;
-    border-radius: .5rem;
+    width: 3.3rem;
+    height: 3.3rem;
+    line-height: 3.3rem;
     display: block;
+    filter: drop-shadow(2px 4px 1px #d9d9d9);
 }
 
 .bookmark-default-img {
@@ -184,6 +184,13 @@ html, body {
 
 .black .bookmark-name {
     color: #efefef;
+}
+
+.bookmark:hover {
+    filter: brightness(1.125);
+}
+.bookmark:hover .bookmark-name{
+    font-weight: 600;
 }
 
 .settings {
@@ -443,7 +450,7 @@ html, body {
 
 @media (min-width: 3800px) {
 
-    .search-bar{
+    .search-bar {
         padding-bottom: 6rem;
     }
 
@@ -465,10 +472,12 @@ html, body {
         padding: 1.75rem 0 1.75rem 4rem;
         font-size: 1.75rem !important;
     }
-    .bookmarks{
+
+    .bookmarks {
         padding: 1.25rem 2rem;
     }
-    .bookmarks-group{
+
+    .bookmarks-group {
         margin-bottom: 2rem;
     }
 
@@ -478,7 +487,7 @@ html, body {
         white-space: nowrap;
     }
 
-    .bookmark{
+    .bookmark {
         padding: 0 2rem;
     }
 
