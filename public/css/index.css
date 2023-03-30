@@ -103,7 +103,7 @@ html, body {
     max-width: 37.5%;
     min-height: 15rem;
     border-radius: 1rem;
-    padding: .5rem 1rem;
+    padding: 1rem 1rem 0;
 }
 
 .bookmarks-group {
