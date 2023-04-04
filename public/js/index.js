@@ -472,7 +472,7 @@ const vm = new Vue({
                         if(typeof callback === 'function') {
                             callback();
                         }
-                    }
+                    };
                     live2djs.id = 'live2djs';
                     live2djs.async = true;
                     live2djs.src = 'https://fastly.jsdelivr.net/gh/zzzmhcn/live2dDemo@1.0.0/js/live2d.min.js';
