@@ -21,6 +21,24 @@ const vm = new Vue({
                 idbKeyval.set('config.bookmarks', JSON.stringify(val));
             },
             deep: true
+        },
+        'live2d': {
+            handler(val, prev) {
+                idbKeyval.set('live2d', JSON.stringify(val));
+            },
+            deep: true
+        },
+        // 'live2d.open': {
+        //     handler(val, prev) {
+        //         this.loadLive2dResources(val);
+        //     },
+        //     deep: true
+        // },
+        'live2d.json': {
+            handler(val, prev) {
+                this.loadLive2dModel(val);
+            },
+            deep: true
         }
     },
     data: {
@@ -99,11 +117,30 @@ const vm = new Vue({
                     icon: 'icon-save'
                 },
                 {
+                    name: '模型加载',
+                    icon: 'icon-customer-interests'
+                },
+                {
                     name: '关于本站',
                     icon: 'icon-info'
                 }
             ],
             activeIndex: 0
+        },
+        live2d: {
+            open: false,
+            show: false,
+            models: [{'name': '22娘', 'value': 'model/22/model.default.json'}, {
+                'name': '33娘',
+                'value': 'model/33/model.default.json'
+            }, {'name': '羊栖菜', 'value': 'model/hijiki/hijiki.model.json'}, {
+                'name': '山药泥',
+                'value': 'model/tororo/tororo.model.json'
+            }, {'name': '小埋', 'value': 'model/xiaomai/xiaomai.model.json'}, {
+                'name': '碗中小年糕',
+                'value': 'model/wanko/wanko.model.json'
+            }, {'name': '血小板', 'value': 'model/platelet-3/kesyoban.model.json'}],
+            json: ''
         }
     },
     methods: {
@@ -122,9 +159,22 @@ const vm = new Vue({
                 if (val) {
                     vm.config.background = val;
                 } else {
-                    this.getDefaultImage();
+                    vm.getDefaultImage();
                 }
             });
+            idbKeyval.get('live2d').then((val) => {
+                if (val) {
+                    const json = JSON.parse(val);
+                    if (json.open) {
+                        vm.live2d.open = json.open;
+                        vm.loadLive2dResources(function (){
+                            vm.live2d.json = json.json;
+                        });
+
+                    }
+                }
+            });
+
             this.jsonReset();
             // 搜索框获取焦点
             this.$refs.keyword.focus();
@@ -410,6 +460,30 @@ const vm = new Vue({
                 this.getDefaultBookmarks();
                 alert('已重置！');
             }
+        },
+        /** 加载live2d的js资源 判断条件为 打开开关 且之前没有加载过本js (反复测试后发现，如果用户打开开关瞬间加载模型，会造成找不到方法而失败，这里加入show字段，用于控制加载完成后才允许选择模型) */
+        loadLive2dResources: function (callback) {
+            if (this.live2d.open) {
+                let live2djs = document.querySelector('#live2djs');
+                if (!live2djs) {
+                    live2djs = document.createElement('script');
+                    live2djs.onload = function (){
+                        vm.live2d.show = true;
+                        if(typeof callback === 'function') {
+                            callback();
+                        }
+                    }
+                    live2djs.id = 'live2djs';
+                    live2djs.async = true;
+                    live2djs.src = 'https://fastly.jsdelivr.net/gh/zzzmhcn/live2dDemo@1.0.0/js/live2d.min.js';
+                    document.body.appendChild(live2djs);
+                }
+            }else {
+                this.live2d.show = false;
+            }
+        },
+        loadLive2dModel: function (json) {
+            if (json) loadlive2d('live2d', 'https://fastly.jsdelivr.net/gh/zzzmhcn/live2dDemo@1.0.0/' + json);
         }
     },
     mounted() {

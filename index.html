@@ -79,7 +79,7 @@
         <div class="settings-center">
             <div v-if="settingsMenus.activeIndex == 0" class="settings-center-panel">
                 <div class="settings-center-item">
-                    <label>搜索引擎: </label>
+                    <span class="label">搜索引擎: </span>
                     百度 <input type="radio" name="searchEngine" value="0"
                               v-model="config.settings.searchEngineDefaultIndex">
                     必应 <input type="radio" name="searchEngine" value="1"
@@ -90,21 +90,21 @@
                                   v-model="config.settings.searchEngineDefaultIndex">
                 </div>
                 <div class="settings-center-item">
-                    <label>主题色系: </label>
+                    <span class="label">主题色系: </span>
                     亮色系 <input type="radio" name="theme" value="white" v-model="config.settings.theme">
                     暗色系 <input type="radio" name="theme" value="black" v-model="config.settings.theme">
                 </div>
                 <div class="settings-center-item">
-                    <label>书签栏透明度: </label>
+                    <span class="label">书签栏透明度: </span>
                     <input type="range" min="0" max="100" v-model="config.settings.bookmarks.opacity">
                     <span>{{config.settings.bookmarks.opacity}}%</span>
                 </div>
                 <div class="settings-center-item">
-                    <label>选择背景图片: </label>
+                    <span class="label">选择背景图片: </span>
                     <input type="file" accept="image/*" @change="changeBackgroundImage">
                 </div>
                 <div class="settings-center-item">
-                    <label>背景图透明度: </label>
+                    <span class="label">背景图透明度: </span>
                     <input type="range" min="0" max="100" v-model="config.settings.background.opacity">
                     <span>{{config.settings.background.opacity}}%</span>
                 </div>
@@ -133,8 +133,31 @@
                     <button @click="resetSettings" class="settings-input-output-reset">重置</button>
                 </div>
             </div>
+            <!-- 模型加载 -->
+            <div v-if="settingsMenus.activeIndex == 3" class="settings-center-panel">
+                <div class="settings-input-output settings-live2d">
+                    <p class="settings-live2d-message">
+                        这是一个非常不极简的功能(手动doge)，开启后会增加cpu算力消耗，但是我个人很喜欢，所以就加了这个功能，不喜勿开 (手动滑稽)
+                    </p>
+                    <div class="settings-center-item">
+                        <span class="label">模型开关: </span>
+                        <div class="settings-live2d-switch">
+                            <input id="live2d-open" type="checkbox" class="switch" v-model="live2d.open" @change="loadLive2dResources">
+                            <label for="live2d-open"></label>
+                        </div>
+                    </div>
+                    <div class="settings-center-item" v-if="live2d.show">
+                        <span class="label">选择模型: </span>
+                        <div class="settings-live2d-model" v-for="(model,index) in live2d.models" :key="index" @click="live2d.json = model.value"
+                             :style="{borderColor: (live2d.json == model.value ? '#0075ff':'rgba(0,0,0,.33)')}">
+                            <span style="cursor: unset;margin-left: 8px">{{model.name}}</span>
+                            <input type="radio" name="models" :value="model.value" v-model="live2d.json">
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- 关于页面 -->
-            <div v-else-if="settingsMenus.activeIndex == 3" class="settings-center-panel">
+            <div v-else-if="settingsMenus.activeIndex == 4" class="settings-center-panel">
                 <div style="color: #555;padding-top: 1rem">
                     <div style="margin-top: .5rem">
                         <img src="favicon.ico" style="vertical-align: middle">
@@ -165,8 +188,9 @@
             </div>
         </div>
     </div>
+    <canvas id="live2d" width="256" height="256" v-show="live2d.show"></canvas>
 </div>
-<script src="https://cdn.staticfile.org/vue/2.6.12/vue.min.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.6.12/vue.js"></script>
 <script src="https://cdn.staticfile.org/idb-keyval/6.2.0/umd.min.js"></script>
 <script src="public/js/index.js"></script>
 <script async src="https://hm.baidu.com/hm.js?f87b822d1b92d32c92eaee53be6db31b"></script>
