@@ -167,7 +167,7 @@ const vm = new Vue({
                     const json = JSON.parse(val);
                     if (json.open) {
                         vm.live2d.open = json.open;
-                        vm.loadLive2dResources(function (){
+                        vm.loadLive2dResources(function () {
                             vm.live2d.json = json.json;
                         });
 
@@ -467,23 +467,25 @@ const vm = new Vue({
                 let live2djs = document.querySelector('#live2djs');
                 if (!live2djs) {
                     live2djs = document.createElement('script');
-                    live2djs.onload = function (){
+                    live2djs.onload = function () {
                         vm.live2d.show = true;
-                        if(typeof callback === 'function') {
+                        if (typeof callback === 'function') {
                             callback();
                         }
                     };
                     live2djs.id = 'live2djs';
                     live2djs.async = true;
-                    live2djs.src = 'https://fastly.jsdelivr.net/gh/zzzmhcn/live2dDemo@1.0.0/js/live2d.min.js';
+                    live2djs.src = 'public/js/live2d.min.js';
                     document.body.appendChild(live2djs);
+                } else {
+                    this.live2d.show = true;
                 }
-            }else {
+            } else {
                 this.live2d.show = false;
             }
         },
         loadLive2dModel: function (json) {
-            if (json) loadlive2d('live2d', 'https://fastly.jsdelivr.net/gh/zzzmhcn/live2dDemo@1.0.0/' + json);
+            if (json) loadlive2d('live2d', 'public/' + json);
         }
     },
     mounted() {
