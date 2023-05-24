@@ -52,11 +52,22 @@ const vm = new Vue({
                 },
                 bookmarks: {
                     opacity: 88
-                }
+                },
+                bookmarksView: 'gui'
             }
         },
         dialogs: {
-            settings: false
+            settings: false,
+            settingsIcon: false
+        },
+        icon: {
+            name: '',
+            image: '',
+            url: '',
+            flag: 0,
+            icon: false,
+            i: null,
+            j: null
         },
         search: {
             keyword: '',
@@ -455,7 +466,12 @@ const vm = new Vue({
         /** 全部配置重置为默认 */
         resetSettings: function () {
             if (confirm('确定要重置吗？所有设置都会被清除！')) {
-                this.config.settings = {theme: 'white', background: {opacity: 100}, bookmarks: {opacity: 88}};
+                this.config.settings = {
+                    theme: 'white',
+                    background: {opacity: 100},
+                    bookmarks: {opacity: 88},
+                    bookmarksView: 'gui'
+                };
                 this.getDefaultImage();
                 this.getDefaultBookmarks();
                 alert('已重置！');
@@ -486,7 +502,59 @@ const vm = new Vue({
         },
         loadLive2dModel: function (json) {
             if (json) loadlive2d('live2d', 'public/' + json);
-        }
+        },
+        deleteBookmarksGroup: function (name, i) {
+            if (confirm('确定要删除 \'' + name + '\' 吗？')) {
+                this.bookmarks.splice(i, 1);
+            }
+        },
+        deleteBookmark: function (name, i, j) {
+            if (confirm('确定要删除 \'' + name + '\' 吗？')) {
+                this.bookmarks[i] && this.bookmarks[i].marks.splice(j, 1);
+            }
+        },
+        newGroup: function () {
+            this.bookmarks.push({"name": "", "marks": []});
+        },
+        newBookmark: function (i) {
+            this.bookmarks[i] && this.bookmarks[i].marks.push({name: '', url: '', image: '', icon: false})
+        },
+        changeIcon: function (bookmark, i , j) {
+            this.dialogs.settingsIcon = true;
+            this.icon.name = bookmark.name;
+            this.icon.url = bookmark.url ? bookmark.url : this.getImage(bookmark.url);
+            this.icon.image = bookmark.image;
+            this.icon.icon = bookmark.icon;
+            this.icon.flag = bookmark.icon == false ? 2 : bookmark.image ? 0 : 1;
+            this.icon.i = i;
+            this.icon.j = j;
+        },
+        confirmIcon: function (){
+            const mark = this.bookmarks[this.icon.i] && this.bookmarks[this.icon.i].marks[this.icon.j];
+            mark.name =  this.icon.name;
+            mark.url =  this.icon.url;
+            mark.image =  this.icon.flag == 1 ? null : this.icon.image;
+            mark.icon =  this.icon.flag == 2 ? false : true;
+            this.icon = {
+                name: '',
+                image: '',
+                url: '',
+                flag: 0,
+                icon: false,
+                i: null,
+                j: null
+            };
+            this.dialogs.settingsIcon = false;
+        },
+        uploadIcon: function (e) {
+            const file = e.target.files[0];
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = function () {
+                vm.icon.image = this.result;
+                vm.icon.icon = true;
+            }
+        },
     },
     mounted() {
         this.init();

@@ -5,8 +5,8 @@ html, body {
 
 .header-bar {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 1rem;
+    right: 2rem;
 }
 
 .header-bar .header-bar-btn {
@@ -135,6 +135,10 @@ html, body {
     display: inherit;
 }
 
+.settings-icon-panel .bookmark {
+    display: inline-block;
+}
+
 .bookmark a {
     text-decoration: none;
 }
@@ -161,8 +165,8 @@ html, body {
     background-color: #1976d2;
     vertical-align: middle;
     overflow: hidden;
-    font-size: 1.25rem;
-    text-indent: 1rem;
+    font-size: 1.75rem;
+    text-indent: 0.75rem;
     text-align: center;
     letter-spacing: 1rem;
     color: #fff;
@@ -194,45 +198,131 @@ html, body {
     font-weight: 600;
 }
 
+
+.settings-icon {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    background-color: rgba(50, 50, 50, .88);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-icon-panel {
+    width: 30rem;
+    height: 20rem;
+    background-color: white;
+    z-index: 1002;
+    border-radius: .66rem;
+    padding: 1.75rem 2rem;
+    position: relative;
+    font-size: 16px;
+}
+
+.settings-icon-panel-title {
+    margin-bottom: 1rem;
+
+}
+
+.settings-icon-panel-bottom {
+    position: absolute;
+    bottom: 1.5rem;
+    width: calc(100% - 4rem);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.settings-icon-panel-type {
+    margin-bottom: 1rem;
+}
+
+.settings-icon-panel-tips {
+    color: #999;
+    margin-bottom: 1.5rem;
+    height: 4rem;
+}
+
+.settings-icon-panel-bottom button {
+    border-radius: 4px;
+    margin: 0 1rem;
+    width: 6rem;
+    outline: 0;
+    height: 2rem;
+    padding: 0 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid #d9d9d9;
+    color: rgba(0, 0, 0, .65);
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.settings-icon-panel-bottom button:hover, .settings-icon-panel-bottom button:focus {
+    color: #40a9ff !important;
+    border-color: #40a9ff !important;
+}
+
 .settings {
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     position: fixed;
-    display: block;
+    display: flex;
     background: white;
+    z-index: 1001;
 }
 
-.settings .icon-close {
+.settings-icon-panel {
+    position: relative;
+}
+
+.settings-icon .dialog-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: #999;
+    cursor: pointer;
+}
+
+.settings .dialog-close {
     position: fixed;
-    top: 5px;
-    right: 5px;
+    top: 1rem;
+    right: 2rem;
     font-size: 32px;
     color: #999;
     cursor: pointer;
 }
 
 .settings-menus {
-    width: 12.5%;
-    float: left;
+    max-width: 12.5%;
+    min-width: 55px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-right: solid 1px #e6e6e6;
 }
 
 .settings-menu {
-    padding: 1rem;
-}
-
-.settings-menu ul {
     min-height: 90vh;
-    border-right: solid 1px #e6e6e6;
     list-style: none;
     position: relative;
-    margin: 0;
-    padding-left: 1rem;
+
+    padding: 0;
     background-color: #fff;
+    margin-top: 20px;
 }
 
-.settings-menu ul li {
+.settings-menu li {
     color: #303133;
     height: 56px;
     line-height: 56px;
@@ -241,22 +331,22 @@ html, body {
     white-space: nowrap;
     position: relative;
     font-size: 14px;
-    padding: 0 20px;
+    padding: 0 2rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.settings-menu ul li .iconfont {
-    margin-right: 5px;
+.settings-menu li .iconfont {
+    margin-right: 10px;
     width: 24px;
-    text-align: center;
     font-size: 18px;
-    vertical-align: middle;
     line-height: 1;
-    display: inline-block;
     color: #909399;
 }
 
-.settings-menu ul .li-active .iconfont, .settings-menu ul .li-active {
+.settings-menu .li-active .iconfont, .settings-menu .li-active {
     color: #409eff !important;
 }
 
@@ -277,11 +367,21 @@ html, body {
 
 .settings-center-item {
     padding: 1rem 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: row;
+    line-height: 32px;
 }
 
 .settings-center-item .label {
     display: inline-block;
     width: 8rem;
+}
+
+.settings-center-item .label-smail {
+    display: inline-block;
+    width: 6rem;
 }
 
 .settings-center-item input[type='range'] {
@@ -290,7 +390,7 @@ html, body {
 
 .settings-center-item input[type='radio'] {
     vertical-align: middle;
-    margin: 0 1rem 0 0;
+    margin: 0 1.25rem 0 .25rem;
 }
 
 .settings-center-item.picture-item img {
@@ -299,7 +399,7 @@ html, body {
 
 .settings-bookmarks textarea {
     width: 80%;
-    height: 90vh;
+    height: 85vh;
     color: rgba(0, 0, 0, .65);
     font-variant: tabular-nums;
     list-style: none;
@@ -309,7 +409,7 @@ html, body {
     line-height: 1.5;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
-    overflow: auto;
+    /*overflow: auto;*/
     resize: vertical;
     outline-color: #409eff;
 }
@@ -321,11 +421,12 @@ html, body {
     max-width: 80%;
 }
 
-.settings-bookmarks .settings-bookmarks-bottom .settings-bookmarks-bottom-button {
-    float: right;
+.settings-bookmarks .settings-center-item .settings-bookmarks-bottom-button {
+    /*float: left;*/
+    display: inline-block;
 }
 
-.settings-bookmarks .settings-bookmarks-bottom .settings-bookmarks-bottom-button button, .settings-input-output button {
+.settings-bookmarks .settings-center-item .settings-bookmarks-bottom-button button, .settings-input-output button {
     border-radius: 4px;
     margin-left: 1rem;
     width: 100px;
@@ -345,6 +446,171 @@ html, body {
 .settings-bookmarks-bottom-button button:hover, .settings-bookmarks-bottom-button button:focus {
     color: #40a9ff !important;
     border-color: #40a9ff !important;
+}
+
+.settings-center {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.settings-bookmarks-view input {
+    border-top: unset;
+    border-left: unset;
+    border-right: unset;
+    border-bottom: #d4d4d4 solid 1px;
+}
+
+
+.settings-bookmarks-view input:focus {
+    outline: none;
+}
+
+.settings-bookmarks-view-marks-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 1rem 0;
+}
+
+.marks-group-image {
+    background: rgba(255, 255, 255, .95);
+    border-radius: 0.66rem;
+    overflow: hidden;
+    margin-right: .5rem;
+}
+
+.marks-group-image img {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    display: block;
+    filter: drop-shadow(2px 4px 1px #d9d9d9);
+}
+
+.marks-group-image-box {
+    position: relative;
+    cursor: pointer;
+}
+
+.marks-group-image-box .iconfont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    border-radius: 0.66rem;
+    opacity: 0;
+}
+
+.marks-group-image-box .iconfont:hover {
+    opacity: .85;
+    color: #777;
+    background-color: #f0f0f0;
+}
+
+.marks-group-default-image {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 0.66rem;
+    margin-right: .5rem;
+    background-color: #1976d2;
+    vertical-align: middle;
+    overflow: hidden;
+    font-size: 1.25rem;
+    text-indent: .667rem;
+    text-align: center;
+    letter-spacing: 2rem;
+    color: #fff;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.marks-group-settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.settings-bookmarks-view-group input {
+    margin: .33rem .5rem;
+    padding: 0 1rem;
+    line-height: 30px;
+}
+
+.settings-bookmarks-view-group .delete {
+    float: right;
+    cursor: pointer;
+    margin-top: .25rem;
+    margin-right: 1.888rem;
+}
+
+.settings-bookmarks-view-group-title {
+    display: flex;
+}
+
+.settings-bookmarks-view-group-title span {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 2.5rem;
+    margin-right: .5rem;
+}
+
+.settings-bookmarks-view-group-title input {
+    width: 12rem;
+}
+
+
+.delete .iconfont {
+    font-size: 20px;
+    color: #d4d4d4;
+}
+
+.marks-group-settings input:nth-child(1) {
+    width: 12rem;
+}
+
+.marks-group-settings input:nth-child(2) {
+    width: 26rem;
+}
+
+.marks-group-settings .item-close {
+    cursor: pointer;
+    color: #d4d4d4;
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-bookmarks-view-group {
+    padding: .5rem 0 1rem;
+    font-size: 14px;
+    line-height: 30px;
+    border: #d4d4d4 solid 1px;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    max-width: 50rem;
+}
+
+.settings-bookmarks-add {
+    color: #acacac;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    margin: .5rem 0;
+}
+
+.settings-bookmarks-add .iconfont {
+    margin-right: .5rem;
 }
 
 .search-datalist {
@@ -468,16 +734,34 @@ label:after {
 
 /* 多分辨率兼容 低分辨率和手机端懒得写了 以后再说吧 */
 @media (max-width: 768px) {
-    .search-bar, .bookmarks {
-        width: 100%;
-        max-width: 100%;
+    .search-bar {
+        width: calc(100% - 2rem);
+        max-width: calc(100% - 2rem);
+    }
+
+    .bookmarks {
+        width: calc(100% - 4rem);
+        max-width: calc(100% - 4rem);
+    }
+
+    .settings-menu li {
+        padding: 0;
     }
 }
 
 @media (min-width: 769px) {
-    .search-bar, .bookmarks {
-        width: 80%;
-        max-width: 80%;
+    .search-bar {
+        width: calc(80% - 2rem);
+        max-width: calc(80% - 2rem);
+    }
+
+    .bookmarks {
+        width: calc(80% - 4rem);
+        max-width: calc(80% - 4rem);
+    }
+
+    .settings-menu li {
+        padding: 0;
     }
 }
 
@@ -491,6 +775,8 @@ label:after {
         width: 65%;
         max-width: 65%;
     }
+
+
 }
 
 @media (min-width: 1200px) {
@@ -503,6 +789,10 @@ label:after {
         width: 50%;
         max-width: 50%;
     }
+
+    .settings-menu li {
+        padding: 0 2rem;
+    }
 }
 
 @media (min-width: 1600px) {
@@ -514,6 +804,10 @@ label:after {
     .bookmarks {
         width: 37.5%;
         max-width: 37.5%;
+    }
+
+    .settings-menus {
+        width: 12.5%;
     }
 }
 
