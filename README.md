@@ -1,7 +1,13 @@
 # 极简导航
-当前版本为: 1.0.0 <br>
+当前版本为: 1.0.1 <br>
 线上地址: [https://nav.zzzmh.cn](https://nav.zzzmh.cn) <br>
 开源地址: [https://github.com/zzzmhcn/nav](https://github.com/zzzmhcn/nav) <br>
+
+## 版本更新
+
+#### 1.0.1 
+2023/05
+在设置中 新增图形化配置收藏列表功能
 
 ## 截图
 
