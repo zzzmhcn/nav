@@ -49,3 +49,8 @@
  - doInput方法需要按以下方式防抖节流，keyword改变后延迟1秒执行联想，1秒内无论keyword改变多少次，都以满足1秒后的最后一个关键字去联想，不能高于这个频率（例如用户打字会频繁触发doInput方法，但只有最后输入完成的才需要联想）
  - 有可能的话希望实现一个 支持导入 "从chrome导出的收藏夹" bookmarks_xxx.html 格式 的功能，省得用户自己配置json烦躁
  - 若有一天能解决个人开发者能接入微信扫码登录，可能会实现云同步功能，解决同步过于麻烦等问题
+
+
+## 感谢
+![jb_beam _1_.png](https://s2.loli.net/2023/06/02/caw4KmEWXbOMTFy.png)
+感谢 [JetBrains](https://jb.gg/OpenSourceSupport) 提供免费License支持
