@@ -53,4 +53,4 @@
 
 ## 感谢
 ![jb_beam _1_.png](https://s2.loli.net/2023/06/02/caw4KmEWXbOMTFy.png)
-感谢 [JetBrains](https://jb.gg/OpenSourceSupport) 提供免费License支持
+感谢 [JetBrains](https://jb.gg/OpenSourceSupport) 为本项目提供免费License支持
