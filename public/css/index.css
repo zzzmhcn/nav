@@ -732,6 +732,14 @@ label:after {
     height: 256px;
 }
 
+#he-plugin-simple{
+    display: inline-block;
+    position: absolute;
+    top: 1rem;
+    left: .75rem;
+    width: 140px;
+}
+
 /* 多分辨率兼容 低分辨率和手机端懒得写了 以后再说吧 */
 @media (max-width: 768px) {
     .search-bar {

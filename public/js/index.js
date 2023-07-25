@@ -53,7 +53,11 @@ const vm = new Vue({
                 bookmarks: {
                     opacity: 88
                 },
-                bookmarksView: 'gui'
+                bookmarksView: 'gui',
+                weather: {
+                    open: '1',
+                    color: 'FFFFFF'
+                }
             }
         },
         dialogs: {
@@ -163,7 +167,14 @@ const vm = new Vue({
                     const json = JSON.parse(val);
                     json.searchEngineDefaultIndex = json.searchEngineDefaultIndex ? json.searchEngineDefaultIndex : 0;
                     vm.config.settings = json;
+                    // 为之前已经有缓存的用户做补充
+                    if (!vm.config.settings.weather) {
+                        vm.config.settings.weather = {open: '1', color: 'FFFFFF'}
+                    }
                     vm.search.searchEngineIndex = json.searchEngineDefaultIndex;
+                }
+                if (vm.config.settings.weather.open == 1) {
+                    vm.loadWeather();
                 }
             });
             idbKeyval.get('config.background').then((val) => {
@@ -185,7 +196,6 @@ const vm = new Vue({
                     }
                 }
             });
-
             this.jsonReset();
             // 搜索框获取焦点
             this.$refs.keyword.focus();
@@ -519,7 +529,7 @@ const vm = new Vue({
         newBookmark: function (i) {
             this.bookmarks[i] && this.bookmarks[i].marks.push({name: '', url: '', image: '', icon: false})
         },
-        changeIcon: function (bookmark, i , j) {
+        changeIcon: function (bookmark, i, j) {
             this.dialogs.settingsIcon = true;
             this.icon.name = bookmark.name;
             this.icon.url = bookmark.url ? bookmark.url : this.getImage(bookmark.url);
@@ -529,12 +539,12 @@ const vm = new Vue({
             this.icon.i = i;
             this.icon.j = j;
         },
-        confirmIcon: function (){
+        confirmIcon: function () {
             const mark = this.bookmarks[this.icon.i] && this.bookmarks[this.icon.i].marks[this.icon.j];
-            mark.name =  this.icon.name;
-            mark.url =  this.icon.url;
-            mark.image =  this.icon.flag == 1 ? null : this.icon.image;
-            mark.icon =  this.icon.flag == 2 ? false : true;
+            mark.name = this.icon.name;
+            mark.url = this.icon.url;
+            mark.image = this.icon.flag == 1 ? null : this.icon.image;
+            mark.icon = this.icon.flag == 2 ? false : true;
             this.icon = {
                 name: '',
                 image: '',
@@ -555,8 +565,36 @@ const vm = new Vue({
                 vm.icon.icon = true;
             }
         },
+        loadWeather: function () {
+            const color = this.config.settings.weather.color;
+            window.WIDGET = {
+                "CONFIG": {
+                    "modules": "0123",
+                    "background": "5",
+                    "tmpColor": color,
+                    "tmpSize": "16",
+                    "cityColor": color,
+                    "citySize": "16",
+                    "aqiColor": color,
+                    "aqiSize": "16",
+                    "weatherIconSize": "24",
+                    "alertIconSize": "18",
+                    "shadow": "0",
+                    "language": "auto",
+                    "fixed": "false",
+                    "vertical": "top",
+                    "horizontal": "left",
+                    "key": "2a222b2f06f74d6cb4bee927160ec68d"
+                }
+            };
+            const script = document.createElement("script");
+            script.src = "https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0";
+            script.async = true;
+            document.body.appendChild(script);
+        }
     },
     mounted() {
         this.init();
     }
 });
+

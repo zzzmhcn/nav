@@ -19,9 +19,7 @@
         <img :src="config.background" :style="{opacity: (config.settings.background.opacity / 100)}">
     </div>
     <!-- 预计要在这个位置加一个天气 类似百度登录后首页天气 接口考虑用tianqiapi.com 暂不考虑用iframe方案 太傻 -->
-    <div>
-
-    </div>
+    <div id="he-plugin-simple"></div>
     <!-- 顶部菜单栏 目前只有settings一个按钮 -->
     <div class="header-bar">
         <div class="header-bar-btn" @click="dialogs.settings = true">
@@ -83,9 +81,9 @@
                 <div class="settings-center-item">
                     <span class="label">搜索引擎: </span>
                     百度 <input type="radio" name="searchEngine" value="0"
-                              v-model="config.settings.searchEngineDefaultIndex">
+                                v-model="config.settings.searchEngineDefaultIndex">
                     必应 <input type="radio" name="searchEngine" value="1"
-                              v-model="config.settings.searchEngineDefaultIndex">
+                                v-model="config.settings.searchEngineDefaultIndex">
                     DuckGo <input type="radio" name="searchEngine" value="2"
                                   v-model="config.settings.searchEngineDefaultIndex">
                     Google <input type="radio" name="searchEngine" value="3"
@@ -95,6 +93,12 @@
                     <span class="label">主题色系: </span>
                     亮色系 <input type="radio" name="theme" value="white" v-model="config.settings.theme">
                     暗色系 <input type="radio" name="theme" value="black" v-model="config.settings.theme">
+                </div>
+                <div class="settings-center-item">
+                    <span class="label">天气组件: </span>
+                    开启 <input type="radio" name="weather" value="1" v-model="config.settings.weather.open">
+                    关闭 <input type="radio" name="weather" value="0" v-model="config.settings.weather.open">
+                    颜色: <input type="text" v-model="config.settings.weather.color">
                 </div>
                 <div class="settings-center-item">
                     <span class="label">书签栏透明度: </span>
@@ -131,7 +135,8 @@
                 <div v-if="config.settings.bookmarksView == 'gui'" class="settings-bookmarks-view">
                     <div v-for="(bookmark,index) in bookmarks" :key="index">
                         <div class="settings-bookmarks-view-group">
-                            <div class="settings-bookmarks-view-group-title"><span class="label-smail">标题: </span><input
+                            <div class="settings-bookmarks-view-group-title"><span
+                                    class="label-smail">标题: </span><input
                                     v-model="bookmark.name"><span class="delete"
                                                                   @click="deleteBookmarksGroup(bookmark.name, index)"><i
                                     class="iconfont icon-close"></i></span></div>
@@ -183,7 +188,8 @@
             <div v-if="settingsMenus.activeIndex == 3" class="settings-center-panel">
                 <div class="settings-input-output settings-live2d">
                     <p class="settings-live2d-message">
-                        这是一个非常不极简的功能(手动doge)，开启后会增加cpu算力消耗，但是我个人很喜欢，所以就加了这个功能，不喜勿开 (手动滑稽)
+                        这是一个非常不极简的功能(手动doge)，开启后会增加cpu算力消耗，但是我个人很喜欢，所以就加了这个功能，不喜勿开
+                        (手动滑稽)
                     </p>
                     <div class="settings-center-item">
                         <span class="label-smail">模型开关: </span>
@@ -222,7 +228,8 @@
                         <br>
                         关于icon，有3种方法配置 <br>
                         1 是icon设为true,image设为url或base64 <br>
-                        2 是icon设为true,image设为null,程序会自动去收藏网址的首页请求favicon.ico,国内网站80%会获取成功 <br>
+                        2 是icon设为true,image设为null,程序会自动去收藏网址的首页请求favicon.ico,国内网站80%会获取成功
+                        <br>
                         3 是icon设为false,image设为null,程序会自动获取首字母，生成简易icon <br>
                         <br>
                         更多信息欢迎到开源地址github上查看 <br>
@@ -254,10 +261,10 @@
                 <span class="label-small">方式3: </span>
                 <input type="radio" name="type" value="2" v-model="icon.flag">
             </div>
-<!--            <div class="bookmark-img" v-if="bookmark.icon"><img-->
-<!--                    :src="bookmark.image ? bookmark.image : getImage(bookmark.url)"></div>-->
-<!--            <div class="bookmark-default-img" v-else>{{bookmark.name}}</div>-->
-<!--            <div class="bookmark-name">{{bookmark.name}}</div>-->
+            <!--            <div class="bookmark-img" v-if="bookmark.icon"><img-->
+            <!--                    :src="bookmark.image ? bookmark.image : getImage(bookmark.url)"></div>-->
+            <!--            <div class="bookmark-default-img" v-else>{{bookmark.name}}</div>-->
+            <!--            <div class="bookmark-name">{{bookmark.name}}</div>-->
             <div v-if="icon.flag == 0">
                 <div class="settings-icon-panel-tips">
                     <p>手动上传logo</p>
