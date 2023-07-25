@@ -18,11 +18,9 @@
     <div class="background">
         <img :src="config.background" :style="{opacity: (config.settings.background.opacity / 100)}">
     </div>
+    <!-- 预计要在这个位置加一个天气 类似百度登录后首页天气 接口考虑用tianqiapi.com 暂不考虑用iframe方案 太傻 -->
     <div>
-        <!-- http://www.tianqiapi.com/index/plugin -->
-        <iframe style="padding: 6px 0 0 16px;margin:1rem 0 0 1rem;background: rgba(222,222,222,.25);border-radius: .33rem" scrolling="no"
-                src="https://tianqiapi.com/api.php?style=tz&skin=orange&color=fff" frameborder="0"
-                height="30" allowtransparency="true"></iframe>
+
     </div>
     <!-- 顶部菜单栏 目前只有settings一个按钮 -->
     <div class="header-bar">
