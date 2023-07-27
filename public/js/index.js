@@ -39,6 +39,12 @@ const vm = new Vue({
                 this.loadLive2dModel(val);
             },
             deep: true
+        },
+        'dialogs.settings': {
+            handler(val, prev) {
+                document.body.style.overflow = val ? 'hidden' : 'auto';
+            },
+            deep: true
         }
     },
     data: {
