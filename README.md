@@ -65,7 +65,7 @@
 ---
 
 ## 注意
-如果使用了本项目代码，制作线上的网站，发布到线上地址提供访问，请至少在网站内体现本项目github的开源地址，以写明出处。
+如果使用本项目制作线上网站，请在网站内著名出处，为此github地址：https://github.com/zzzmhcn/nav
 
 ## 感谢
 ![jb_beam _1_.png](https://s2.loli.net/2023/06/02/caw4KmEWXbOMTFy.png)
