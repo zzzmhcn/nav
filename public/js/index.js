@@ -167,7 +167,7 @@ const vm = new Vue({
     methods: {
         /** 启动页面时调用 用于恢复数据到之前保存的状态 */
         init: function () {
-            this.$refs.app.style.display = 'block'
+            this.$refs.app.style.display = 'block';
             // 从db恢复图片 (异步)
             idbKeyval.get('config.settings').then((val) => {
                 if (val) {

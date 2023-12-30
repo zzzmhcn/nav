@@ -754,10 +754,6 @@ label:after {
     width: 140px;
 }
 
-/** 加载中需要隐藏的组件 */
-.init-hidden{
-    display: none;
-}
 
 /* 多分辨率兼容 低分辨率和手机端懒得写了 以后再说吧 */
 @media (max-width: 768px) {
