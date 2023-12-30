@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="public/iconfont/iconfont.css">
 </head>
 <body>
-<div id="app">
+<div id="app" ref="app" style="display: none">
     <!-- 背景图片 用css实现图片居中 -->
     <div class="background">
         <img :src="config.background" :style="{opacity: (config.settings.background.opacity / 100)}">
@@ -307,8 +307,8 @@
     </div>
     <canvas id="live2d" width="256" height="256" v-show="live2d.show"></canvas>
 </div>
-<script src="https://cdn.staticfile.org/vue/2.6.12/vue.min.js"></script>
-<script src="https://cdn.staticfile.org/idb-keyval/6.2.0/umd.min.js"></script>
+<script src="public/js/vue.min.js"></script>
+<script src="public/js/idb-keyval.min.js"></script>
 <script src="public/js/index.js?v=1.0.1"></script>
 <script async src="https://hm.baidu.com/hm.js?f87b822d1b92d32c92eaee53be6db31b"></script>
 </body>
