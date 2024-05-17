@@ -42,9 +42,9 @@
 <br>
 ## 截图
 <br>
-![默认访问效果](https://s2.loli.net/2023/03/30/q78PkT91aEsMdbZ.webp)
+![截图](https://s2.loli.net/2024/05/17/3DjbU2eCQIvFkmH.jpg)
 <br>
-![自定义配置后访问效果](https://s2.loli.net/2023/03/30/NQMx6ac7opP9Llu.webp)
+![截图](https://s2.loli.net/2024/05/17/duH7kStTozZYJym.jpg)
 <br>
 
 ## 使用方法
