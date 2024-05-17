@@ -1,9 +1,8 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 3971834 */
-  src: url('iconfont.woff2?t=1684914444730') format('woff2'),
-       url('iconfont.woff?t=1684914444730') format('woff'),
-       url('iconfont.ttf?t=1684914444730') format('truetype'),
-       url('iconfont.svg?t=1684914444730#iconfont') format('svg');
+  font-family: "iconfont"; /* Project id 4551357 */
+  src: url('iconfont.woff2?t=1715925512608') format('woff2'),
+       url('iconfont.woff?t=1715925512608') format('woff'),
+       url('iconfont.ttf?t=1715925512608') format('truetype');
 }
 
 .iconfont {
@@ -14,11 +13,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-customer-interests:before {
+  content: "\e829";
+}
+
 .icon-add:before {
   content: "\e835";
 }
 
 .icon-edit:before {
+  content: "\e839";
+}
+
+.icon-favorites:before {
+  content: "\e83a";
+}
+
+.icon-close:before {
   content: "\e83b";
 }
 
@@ -26,24 +37,16 @@
   content: "\e83c";
 }
 
-.icon-customer-interests:before {
-  content: "\e829";
-}
-
 .icon-info:before {
   content: "\e83d";
 }
 
-.icon-favorites:before {
-  content: "\e839";
-}
-
-.icon-close:before {
-  content: "\e83a";
-}
-
 .icon-settings:before {
   content: "\e840";
+}
+
+.icon-sorting:before {
+  content: "\e842";
 }
 
 .icon-save:before {

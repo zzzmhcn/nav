@@ -1,6 +1,9 @@
 html, body {
     margin: 0;
     padding: 0;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 ::-webkit-scrollbar {
@@ -600,7 +603,7 @@ html, body {
     width: 26rem;
 }
 
-.marks-group-settings .item-close {
+.marks-group-settings .item-icon {
     cursor: pointer;
     color: #d4d4d4;
     font-size: 20px;
@@ -608,6 +611,11 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
+}
+
+.marks-group-settings .item-icon.icon-sorting{
+    cursor: move;
 }
 
 .settings-bookmarks-view-group {

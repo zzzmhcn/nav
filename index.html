@@ -22,7 +22,7 @@
     <div id="he-plugin-simple"></div>
     <!-- 顶部菜单栏 目前只有settings一个按钮 -->
     <div class="header-bar">
-        <div class="header-bar-btn" @click="dialogs.settings = true">
+        <div class="header-bar-btn" @click="openSettings">
             <i class="iconfont icon-settings"></i>
         </div>
     </div>
@@ -143,22 +143,27 @@
                                                                   @click="deleteBookmarksGroup(bookmark.name, index)"><i
                                     class="iconfont icon-close"></i></span></div>
                             <div>
-                                <div v-for="(mark,i) in bookmark.marks" :key="i"
-                                     class="settings-bookmarks-view-marks-group">
-                                    <div class="marks-group-image-box" @click="changeIcon(mark, index, i)">
-                                        <div class="marks-group-image" v-if="mark.icon">
-                                            <img :src="mark.image ? mark.image : getImage(mark.url)">
+                                <draggable v-model="bookmark.marks" chosen-class="chosen" force-fallback="true"
+                                           group="url" animation="100" handle=".icon-sorting">
+                                    <div v-for="(mark,i) in bookmark.marks" :key="i"
+                                         class="settings-bookmarks-view-marks-group">
+                                        <div class="marks-group-image-box" @click="changeIcon(mark, index, i)">
+                                            <div class="marks-group-image" v-if="mark.icon">
+                                                <img :src="mark.image ? mark.image : getImage(mark.url)">
+                                            </div>
+                                            <div class="marks-group-default-image" v-else>{{mark.name}}</div>
+                                            <div><i class="iconfont icon-edit"></i></div>
                                         </div>
-                                        <div class="marks-group-default-image" v-else>{{mark.name}}</div>
-                                        <div><i class="iconfont icon-edit"></i></div>
+                                        <div class="marks-group-settings">
+                                            <input v-model="mark.name">
+                                            <input v-model="mark.url">
+                                            <i class="iconfont icon-delete item-icon"
+                                               @click="deleteBookmark(mark.name, index, i)"></i>
+                                            <i class="iconfont icon-sorting item-icon"
+                                               @click=""></i>
+                                        </div>
                                     </div>
-                                    <div class="marks-group-settings">
-                                        <input v-model="mark.name">
-                                        <input v-model="mark.url">
-                                        <i class="iconfont icon-delete item-close"
-                                           @click="deleteBookmark(mark.name, index, i)"></i>
-                                    </div>
-                                </div>
+                                </draggable>
                                 <div>
                                     <span class="settings-bookmarks-add" @click="newBookmark(index)"><i
                                             class="iconfont icon-add"></i>新增书签</span>

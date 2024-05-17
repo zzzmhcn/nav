@@ -1,5 +1,9 @@
+Vue.component('vuedraggable', window.vuedraggable)
 const vm = new Vue({
     el: '#app',
+    components: {
+        vuedraggable: window.vuedraggable,
+    },
     watch: {
         'config.settings': {
             handler(val, prev) {
@@ -585,6 +589,20 @@ const vm = new Vue({
             iframe.style.display = 'block';
             const div = document.querySelector('#he-plugin-simple');
             div.appendChild(iframe);
+        },
+        openSettings: function (){
+            // 由于部分功能用到的JS依赖，并非每次启动都需要用到， 每次加载会严重拖慢网站速度， 故打开设置后异步加载这些JS
+            this.dialogs.settings = true;
+            this.loadJavaScript('https://www.itxst.com/package/sortable/Sortable.min.js', true);
+            this.loadJavaScript('https://www.itxst.com/package/vuedraggable/vuedraggable.umd.min.js', true);
+            // <script src="https://www.itxst.com/package/sortable/Sortable.min.js"></script>
+            // <script src="https://www.itxst.com/package/vuedraggable/vuedraggable.umd.min.js"></script>
+        },
+        loadJavaScript: function (src,async){
+            const script = document.createElement('script');
+            script.async = async;
+            script.src = src;
+            document.body.appendChild(script);
         }
     },
     mounted() {
