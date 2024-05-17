@@ -572,32 +572,19 @@ const vm = new Vue({
                 vm.icon.icon = true;
             }
         },
+        /** 在我找到廉价的ip地址直接获取天气数据的方案之前，先用这个tianqiapi插件方案零时解决 */
         loadWeather: function () {
             const color = this.config.settings.weather.color;
-            window.WIDGET = {
-                "CONFIG": {
-                    "modules": "0123",
-                    "background": "5",
-                    "tmpColor": color,
-                    "tmpSize": "16",
-                    "cityColor": color,
-                    "citySize": "16",
-                    "aqiColor": color,
-                    "aqiSize": "16",
-                    "weatherIconSize": "24",
-                    "alertIconSize": "18",
-                    "shadow": "0",
-                    "language": "auto",
-                    "fixed": "false",
-                    "vertical": "top",
-                    "horizontal": "left",
-                    "key": "2a222b2f06f74d6cb4bee927160ec68d"
-                }
-            };
-            const script = document.createElement("script");
-            script.src = "https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0";
-            script.async = true;
-            document.body.appendChild(script);
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://widget.tianqiapi.com/?style=tv&skin=cake&color=' + color;
+            iframe.frameBorder = 0;
+            iframe.scrolling ='no';
+            iframe.width = 255;
+            iframe.height = 25;
+            iframe.allowtransparency = 'true';
+            iframe.style.display = 'block';
+            const div = document.querySelector('#he-plugin-simple');
+            div.appendChild(iframe);
         }
     },
     mounted() {

@@ -50,14 +50,16 @@
          :style="{background: (config.settings.theme == 'white' ? 'rgba(222,222,222,' : 'rgba(33,33,33,') + (config.settings.bookmarks.opacity / 100) + ')'}">
         <div class="bookmarks-group" v-for="(group,index) in bookmarks" :key="index">
             <div class="bookmarks-title"><span>{{group.name}}</span></div>
-            <div class="bookmark" v-for="(bookmark,j) in group.marks" :key="j">
-                <a :href="bookmark.url" target="_blank">
-                    <!-- 收藏链接图片 首先判断icon是否为true 再看image是否有值(支持url / base64) 若image没有值则去链接url首页请求会去该网站首页下请求favicon.icon , 若icon为false用第一个字做简易icon(css实现) -->
-                    <div class="bookmark-img" v-if="bookmark.icon"><img
-                            :src="bookmark.image ? bookmark.image : getImage(bookmark.url)"></div>
-                    <div class="bookmark-default-img" v-else>{{bookmark.name}}</div>
-                    <div class="bookmark-name">{{bookmark.name}}</div>
-                </a>
+            <div class="bookmarks-body">
+                <div class="bookmark" v-for="(bookmark,j) in group.marks" :key="j">
+                    <a :href="bookmark.url" target="_blank">
+                        <!-- 收藏链接图片 首先判断icon是否为true 再看image是否有值(支持url / base64) 若image没有值则去链接url首页请求会去该网站首页下请求favicon.icon , 若icon为false用第一个字做简易icon(css实现) -->
+                        <div class="bookmark-img" v-if="bookmark.icon"><img
+                                :src="bookmark.image ? bookmark.image : getImage(bookmark.url)"></div>
+                        <div class="bookmark-default-img" v-else>{{bookmark.name}}</div>
+                        <div class="bookmark-name">{{bookmark.name}}</div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -81,9 +83,9 @@
                 <div class="settings-center-item">
                     <span class="label">搜索引擎: </span>
                     百度 <input type="radio" name="searchEngine" value="0"
-                                v-model="config.settings.searchEngineDefaultIndex">
+                              v-model="config.settings.searchEngineDefaultIndex">
                     必应 <input type="radio" name="searchEngine" value="1"
-                                v-model="config.settings.searchEngineDefaultIndex">
+                              v-model="config.settings.searchEngineDefaultIndex">
                     DuckGo <input type="radio" name="searchEngine" value="2"
                                   v-model="config.settings.searchEngineDefaultIndex">
                     Google <input type="radio" name="searchEngine" value="3"

@@ -5,24 +5,34 @@
 
 ## 版本更新
 
+#### 2024/05
+和风天气免费天气插件没了<br>
+我一气之下<br>
+~~(想自己开发一个！不受制于人！大丈夫生于天地之间，岂能郁郁久居人下！)~~ <br>
+气了一下<br>
+连夜百度又找了两家，设计，品味，和和风都差远了，凑活吧，还能自己开发一个咋地。主要还是因为没钱！😅<br>
+[https://www.tianqi.com/plugin/list](https://www.tianqi.com/plugin/list)<br>
+[http://tianqiapi.com/index/plugin](http://tianqiapi.com/index/plugin)<br>
+
+<br>
 #### 2023/12
-修复开屏闪烁问题
-发现公共CDN的Vue.js加载速度不太稳定，快的时候飞快，慢的时候抽风。
-如果vue.js没加载起来 v-if就不起作用 导致大量需要隐藏的div就会提前显示出来 并且层级贼高
-解决方法是在最外层 #app 加display:none
-在js init方法第一行 吧display改回block
-
-顺便把2个外部依赖从公共CDN改成本地加载 以防不稳定现象出现
-
+修复开屏闪烁问题<br>
+发现公共CDN的Vue.js加载速度不太稳定，快的时候飞快，慢的时候抽风。<br>
+如果vue.js没加载起来 v-if就不起作用 导致大量需要隐藏的div就会提前显示出来 并且层级贼高<br>
+解决方法是在最外层 #app 加display:none<br>
+在js init方法第一行 吧display改回block<br>
+<br>
+顺便把2个外部依赖从公共CDN改成本地加载 以防不稳定现象出现<br>
+<br>
 #### 2023/07
-加入天气
-加入live2d看板娘
-
+加入天气<br>
+加入live2d看板娘<br>
+<br>
 #### 2023/05
-在设置中 新增图形化配置收藏列表功能
-
+在设置中 新增图形化配置收藏列表功能<br>
+<br>
 ## 截图
-
+<br>
 ![默认访问效果](https://s2.loli.net/2023/03/30/q78PkT91aEsMdbZ.webp)
 <br>
 ![自定义配置后访问效果](https://s2.loli.net/2023/03/30/NQMx6ac7opP9Llu.webp)

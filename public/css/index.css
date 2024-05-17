@@ -117,17 +117,23 @@ html, body {
     max-width: 37.5%;
     min-height: 15rem;
     border-radius: 1rem;
-    padding: 1rem 1rem 0;
+    padding: 1rem 1.5rem;
 }
 
 .bookmarks-group {
     width: 100%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-bottom: 1rem;
 }
-
+.bookmarks-body{
+    display: flex;
+    flex-wrap: wrap;
+}
 .bookmarks-title {
-    padding: 0 1.2rem .5rem;
+    width: 100%;
+    padding: 1rem;
 }
 
 .bookmarks-title span {
@@ -146,7 +152,7 @@ html, body {
 
 .bookmark {
     padding: 0 1rem .8rem;
-    display: inherit;
+    display: flex;
 }
 
 .settings-icon-panel .bookmark {
@@ -747,11 +753,10 @@ label:after {
 }
 
 #he-plugin-simple {
-    display: inline-block;
+    display: block;
     position: fixed !important;
     top: 1rem;
-    left: .75rem;
-    width: 140px;
+    left: 1.75rem;
 }
 
 
