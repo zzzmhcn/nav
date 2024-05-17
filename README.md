@@ -1,5 +1,5 @@
 # 极简导航
-当前版本为: 1.0.1 <br>
+当前版本为: 1.0.3 <br>
 线上地址: [https://nav.zzzmh.cn](https://nav.zzzmh.cn) <br>
 开源地址: [https://github.com/zzzmhcn/nav](https://github.com/zzzmhcn/nav) <br>
 
@@ -10,9 +10,18 @@
 我一气之下<br>
 ~~(想自己开发一个！不受制于人！大丈夫生于天地之间，岂能郁郁久居人下！)~~ <br>
 气了一下<br>
-连夜百度又找了两家，设计，品味，和和风都差远了，凑活吧，还能自己开发一个咋地。主要还是因为没钱！😅<br>
+<br>
+连夜百度又找了两家，设计，品味，和和风都差远了，凑活吧，还能自己开发一个咋地。<br>
+主要还是因为没钱！😅<br>
 [https://www.tianqi.com/plugin/list](https://www.tianqi.com/plugin/list)<br>
 [http://tianqiapi.com/index/plugin](http://tianqiapi.com/index/plugin)<br>
+最终用tianqiapi的先凑活着过了<br>
+
+<br>
+重大更新！<br>
+设置页面里的收藏夹，可以拖动排序了！<br>
+小小的研究了一下VueDraggable<br>
+笔记：[Vue Draggable 入门 网页列表拖动实现排序](https://leanote.zzzmh.cn/blog/post/admin/6646fa3bda7405001404cd19) <br>
 
 <br>
 #### 2023/12
